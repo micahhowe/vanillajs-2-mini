@@ -10,6 +10,7 @@ function addTodo(event) {
     const newLi = document.createElement('li')
     const liValue = input.value
     newLi.innerText = liValue
+    newLi.addEventListener("click", completeTodo);
     const delButton = document.createElement('button')
     delButton.innerText = 'x'
     delButton.addEventListener('click', removeTodo)
@@ -20,4 +21,13 @@ function addTodo(event) {
 
 function removeTodo(event){
     event.target.parentNode.remove()
+}
+
+function completeTodo(event){
+    const value = event.target.getAttribute('aria-checked')
+    if(value !== 'true') {
+        event.target.setAttribute('aria-checked', 'true')
+    } else{
+        event.target.setAttribute('aria-checked', 'false')
+    }
 }
